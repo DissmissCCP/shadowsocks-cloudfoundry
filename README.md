@@ -41,6 +41,8 @@ Push the code to Bluemix cloudfoundry,change 'youremailaddress','yourorgname','y
 
 Waiting until uploading and compling complete,there will be shown your app is running.
 
+[Node.js install instructions](https://github.com/nodesource/distributions).
+
 Open terminal , run `node local.js`.
 
 Change proxy settings of your browser into

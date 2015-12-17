@@ -1,44 +1,47 @@
-shadowsocks-dotcloud
+shadowsocks-cloudfoundry
 ===========
 
-[![Build Status](https://travis-ci.org/clowwindy/shadowsocks-dotcloud.png)](https://travis-ci.org/clowwindy/shadowsocks-dotcloud)
+forked from shadowsocks-dotcloud
 
-shadowsocks-dotcloud is a lightweight tunnel proxy which can help you get through
+shadowsocks-cloudfoundry is a lightweight tunnel proxy which can help you get through
  firewalls. It is a port of [shadowsocks](https://github.com/clowwindy/shadowsocks), but
  through a different protocol.
 
-shadowsocks-dotcloud uses WebSockets instead of raw sockets,
- so it can be deployed on [dotcloud](https://www.dotcloud.com/).
 
 Notice that the protocol is INCOMPATIBLE with the origin shadowsocks.
 
 usage
 -----------
 
-Sign up for [dotcloud](https://www.dotcloud.com/).
+Sign up for [IBM Bluemix](https://console.ng.bluemix.net/).
 
-Install [dotcloud CLI](https://docs.dotcloud.com/0.9/firststeps/install/).
+Creat a new cloudfoundry node.js app,don't close the instruction window,there will be useful.
 
-Put the code somewhere, for example shadowsocks-dotcloud/. Edit `shadowsocks/config.json`, change the following values:
+Follow the instructions to install [cloudfoundry-cli](https://github.com/cloudfoundry/cli).
 
-    server          your server hostname, for example, shadowsocks-YOURUSERNAME.dotcloud.com
+Put the code somewhere, for example shadowsocks-cloudfoundry/. Edit `config.json`, change the following values:
+
+    server          your server hostname, for example, YOURCFAPP.mybluemix.net
     local_port      local port
     password        a password used to encrypt transfer
     timeout         in seconds
     method          encryption method, null by default, or use "rc4"
 
-Upload the code. You can choose your own app name other than `shadowsocks`. You'll see your hostname at the end.
+Edit `manifest.yml`, change the following values:
 
-    $ dotcloud create shadowsocks
-    Created application "shadowsocks" using the flavor "sandbox"
-    ...
-    $ dotcloud push --application shadowsocks shadowsocks-dotcloud/
-    # upload shadowsocks-dotcloud/ ssh://dotcloud@uploader.dotcloud.com:443/shadowsocks
-    ...
-    Deployment finished. Your application is available at the following URLs
-    www: http://shadowsocks-YOURUSERNAME.dotcloud.com/
+    memory          change 128M to 256M,if you want larger RAM
+    name            your cloudfoundry app name,for example,yourcfapp
+    host            your cloudfoundry app name,for example,yourcfapp
 
-Open terminal, cd into shadowsocks, run `node local.js`.
+Push the code to Bluemix cloudfoundry,change 'youremailaddress','yourorgname','yourspacename','yourcfapp' to exactly yours.
+
+    cf api https://api.ng.bluemix.net
+    cf login -u youremailaddress -o yourorgname -s yourspacename
+    cf push yourcfapp
+
+Waiting until uploading and compling complete,there will be shown your app is running.
+
+Open terminal , run `node local.js`.
 
 Change proxy settings of your browser into
 
@@ -48,6 +51,13 @@ Change proxy settings of your browser into
 troubleshooting
 ----------------
 
-If there is something wrong, you can check the logs by:
+If there is something wrong, you can check the logs.
 
-    $ dotcloud logs www --application shadowsocks
+usage for cloudnode
+-----------
+
+Delete the manifest.yml,this file is useless for cloudnode.
+
+Open server.js change port 8080 to cloudno.de signed port for you,you can't use any listing port as you want.
+
+git add and git push to your cloudnode app.

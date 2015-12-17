@@ -60,6 +60,6 @@ usage for cloudnode
 
 Delete the manifest.yml,this file is useless for cloudnode.
 
-Open server.js change port 8080 to cloudno.de signed port for you,you can't use any listing port as you want.
+Open server.js change port 8080 to cloudno.de signed port for you,you can't use any listening port as you want.
 
 git add and git push to your cloudnode app.

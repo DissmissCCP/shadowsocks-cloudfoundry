@@ -1,7 +1,7 @@
 shadowsocks-cloudfoundry
 ===========
 
-forked from shadowsocks-dotcloud
+Original from shadowsocks-dotcloud
 
 shadowsocks-cloudfoundry is a lightweight tunnel proxy which can help you get through
  firewalls. It is a port of [shadowsocks](https://github.com/clowwindy/shadowsocks), but

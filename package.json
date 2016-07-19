@@ -1,6 +1,6 @@
 {
-  "name": "shadowsocks-dotcloud",
-  "version": "0.9.6",
+  "name": "shadowsocks-cloudfoudry",
+  "version": "1.0",
   "dependencies": {
   },
   "engines": {
